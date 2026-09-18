@@ -1,14 +1,56 @@
+
 function Contact() {
   return (
-    <section id="contact" className="contact">
-      <h2>¿Trabajamos juntos?</h2>
-      <ul className="contact-list">
-        <li><a href="mailto:tu_correo@ejemplo.com">tu_correo@ejemplo.com</a></li>
-        <li><a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noreferrer">LinkedIn</a></li>
-        <li><a href="https://github.com/FernandoSZM" target="_blank" rel="noreferrer">GitHub</a></li>
-      </ul>
+    <section id="contact" className="section contact">
+      <div className="section-label">
+        <span>04</span>
+        <p>Contact</p>
+      </div>
+
+      <div className="contact-content">
+        <span className="contact-eyebrow">
+          Have a project in mind?
+        </span>
+
+        <h2>
+          Let's build
+          <em> something.</em>
+        </h2>
+
+        <p>
+          I'm open to interesting projects, professional opportunities
+          and conversations about technology.
+        </p>
+
+        <a
+          href="mailto:tu_correo@ejemplo.com"
+          className="contact-email"
+        >
+          tu_correo@ejemplo.com
+          <span>↗</span>
+        </a>
+
+        <div className="social-links">
+          <a
+            href="https://github.com/FernandoSZM"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://linkedin.com/in/tu-usuario"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
 
 export default Contact;
+
