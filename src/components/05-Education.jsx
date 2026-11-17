@@ -8,14 +8,10 @@ function Education({ language }) {
 
       <div className="education-content">
         <div className="section-heading">
-          <h2>
-            {isSpanish ? 'Una base para' : 'A foundation for'}
-            <em>{isSpanish ? ' crear lo que importa.' : ' building what matters.'}</em>
-          </h2>
+          <h2>{isSpanish ? 'Formación académica' : 'Academic background'}</h2>
         </div>
 
         <article className="education-card">
-          <span className="education-card-label">{isSpanish ? 'Formación académica' : 'Academic background'}</span>
           <h3>Universidad de Costa Rica</h3>
           <p>{isSpanish ? 'Bachillerato en Informática Empresarial' : 'Bachelor’s Degree in Business Informatics'}</p>
           <div className="education-focus">

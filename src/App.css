@@ -39,7 +39,7 @@ body {
   background: var(--bg);
   color: var(--ink);
 
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 
   line-height: 1.6;
 
@@ -61,7 +61,7 @@ p {
 h1,
 h2,
 h3 {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
 }
 
 a {
@@ -1730,7 +1730,7 @@ background: linear-gradient(
 }
 
 .about-lead {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
 }
 
@@ -2062,7 +2062,7 @@ button:focus-visible {
 }
 
 .visual-card figcaption strong {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
   font-size: clamp(1.2rem, 2.3vw, 1.7rem);
   font-weight: 400;
   line-height: 1.1;
@@ -2491,7 +2491,7 @@ button:focus-visible {
   width: fit-content;
   padding: 0.3rem 0;
   color: #f5f8f4;
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
   font-size: clamp(2.5rem, 7vw, 5.5rem);
   font-weight: 400;
   line-height: 1.15;

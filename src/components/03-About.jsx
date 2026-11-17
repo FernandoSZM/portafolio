@@ -9,28 +9,28 @@ function About({ language }) {
 
       <div className="about-content">
         <h2>
-          {isSpanish ? 'Convierto problemas complejos en' : 'I turn complex problems into'}
-          <em>{isSpanish ? ' software simple y útil.' : ' simple, useful software.'}</em>
+          {isSpanish ? 'Diseño sistemas que convierten' : 'I design systems that turn'}
+          <em>{isSpanish ? ' datos en decisiones.' : ' data into decisions.'}</em>
         </h2>
 
         <div className="about-grid">
           <p className="about-lead">
             {isSpanish
-              ? 'Soy Fernando, bachiller en Informática Empresarial de Costa Rica, con gran interés en desarrollo de software, datos y tecnologías en la nube.'
-              : "I'm Fernando, a Business Informatics graduate from Costa Rica with a strong interest in software development, data, and cloud technologies."}
+              ? 'Soy Fernando, ingeniero en sistemas enfocado en arquitectura de software y análisis de datos. Me interesa crear soluciones que conecten sistemas confiables con información útil.'
+              : "I'm Fernando, a Systems Engineer focused on software architecture and data analytics. I build solutions that connect reliable systems with useful insights."}
           </p>
 
           <div className="about-details">
             <p>
               {isSpanish
-                ? 'Combino la resolución de problemas técnicos con el enfoque en crear aplicaciones limpias, fáciles de mantener y realmente útiles.'
-                : 'My approach combines technical problem-solving with a focus on building applications that are clean, maintainable, and genuinely useful.'}
+                ? 'Diseño arquitecturas claras y mantenibles, pensando en cómo cada componente, servicio y dato encaja en el sistema completo.'
+                : 'I design clear, maintainable architectures, considering how each component, service, and data source fits into the larger system.'}
             </p>
 
             <p>
               {isSpanish
-                ? 'Disfruto trabajar en distintas capas: desde bases de datos y servicios backend hasta interfaces modernas e infraestructura en la nube.'
-                : 'I enjoy working across the stack — from databases and backend services to modern interfaces and cloud infrastructure.'}
+                ? 'También analizo datos para encontrar patrones y comunicar hallazgos que ayuden a resolver problemas y tomar mejores decisiones.'
+                : 'I also analyze data to uncover patterns and communicate findings that help solve problems and support better decisions.'}
             </p>
 
             <div className="about-location">
