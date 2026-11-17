@@ -1,4 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-  <rect width="48" height="48" rx="12" fill="#fbfcfa"/>
-  <path d="M14 35V13h4l12 15V13h4v22h-4L18 20v15z" fill="#47745a"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="NANCORE isotipo N verde y plateado">
+  <defs>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a6ff20"/><stop offset=".43" stop-color="#49ec08"/><stop offset="1" stop-color="#00ad27"/></linearGradient>
+    <linearGradient id="greenSide" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#51e500"/><stop offset="1" stop-color="#008b25"/></linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset=".55" stop-color="#ededf0"/><stop offset="1" stop-color="#aeb1bb"/></linearGradient>
+    <linearGradient id="silverSide" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#999da8"/></linearGradient>
+  </defs>
+  <!-- Transparent background, scalable vector geometry -->
+  <path d="M130 300 Q115 310 115 340 L115 553 Q115 573 132 591 L262 720 L262 490 Z" fill="url(#greenSide)"/>
+  <path d="M130 300 Q157 278 180 300 L568 690 L420 690 L131 403 Q115 388 115 363 L115 341 Q115 316 130 300Z" fill="url(#green)"/>
+  <path d="M200 180 L365 180 Q381 180 393 193 L655 456 L655 236 Q655 216 641 201 L610 169 L610 438 Z" fill="url(#silverSide)"/>
+  <path d="M200 180 L365 180 Q382 180 394 193 L666 466 Q684 484 684 507 L684 575 Q684 604 661 619 Q638 632 616 611 L200 195 Q188 183 200 180Z" fill="url(#silver)"/>
 </svg>

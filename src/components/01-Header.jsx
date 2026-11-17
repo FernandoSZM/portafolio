@@ -24,7 +24,10 @@ function Header({ language, onLanguageChange, theme, onThemeChange }) {
       <nav className="nav">
         <div className="nav-brand">
           <a href="#hero" className="nav-logo" onClick={closeMenu}>
-            NANCORE<span>.</span>
+            <img
+              src={isDark ? '/nancore-wordmark-dark.png' : '/nancore-wordmark-light.png'}
+              alt="NANCORE"
+            />
           </a>
         </div>
 
