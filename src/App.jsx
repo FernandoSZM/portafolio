@@ -1,34 +1,23 @@
 
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
+import Header from './components/01-Header';
+import Hero from './components/02-Hero';
+import About from './components/03-About';
+import Education from './components/05-Education';
+import Skills from './components/06-Skills';
+import Projects from './components/07-Projects';
+import Contact from './components/08-Contact';
 
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-
-      <div className="background-effects" aria-hidden="true">
-        <div className="grid-background" />
-
-        <div className="ambient-light ambient-light-one" />
-        <div className="ambient-light ambient-light-two" />
-
-        <div className="floating-orb orb-one" />
-        <div className="floating-orb orb-two" />
-
-        <div className="scan-line" />
-      </div>
-
       <Header />
 
       <main>
         <Hero />
         <About />
+        <Education />
         <Skills />
         <Projects />
         <Contact />
@@ -38,7 +27,7 @@ function App() {
         <span>© 2026 Fernando Sánchez Moraga</span>
 
         <span>
-          Designed & built with React
+          NANCORE · Designed & built with React
         </span>
 
         <a href="#hero">
@@ -50,4 +39,3 @@ function App() {
 }
 
 export default App;
-

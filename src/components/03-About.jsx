@@ -3,7 +3,6 @@ function About() {
   return (
     <section id="about" className="section about">
       <div className="section-label">
-        <span>01</span>
         <p>About me</p>
       </div>
 
@@ -43,4 +42,3 @@ function About() {
 }
 
 export default About;
-

@@ -3,7 +3,6 @@ function Contact() {
   return (
     <section id="contact" className="section contact">
       <div className="section-label">
-        <span>04</span>
         <p>Contact</p>
       </div>
 
@@ -53,4 +52,3 @@ function Contact() {
 }
 
 export default Contact;
-

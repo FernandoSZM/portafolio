@@ -35,7 +35,6 @@ function Projects() {
   return (
     <section id="projects" className="section projects">
       <div className="section-label">
-        <span>03</span>
         <p>Selected work</p>
       </div>
 
@@ -55,10 +54,6 @@ function Projects() {
         <div className="projects-list">
           {projects.map((project) => (
             <article className="project" key={project.number}>
-              <div className="project-number">
-                {project.number}
-              </div>
-
               <div className="project-info">
                 <span className="project-type">
                   {project.type}
@@ -109,4 +104,3 @@ function Projects() {
 }
 
 export default Projects;
-
