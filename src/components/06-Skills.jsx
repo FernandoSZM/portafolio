@@ -1,18 +1,19 @@
-function Skills() {
+function Skills({ language }) {
+  const isSpanish = language === 'es';
   const categories = [
     {
       number: '01',
-      title: 'Backend',
+      title: isSpanish ? 'Backend' : 'Backend',
       technologies: ['Python', 'C#', 'Java', 'ETL'],
     },
     {
       number: '02',
-      title: 'Frontend',
+      title: isSpanish ? 'Frontend' : 'Frontend',
       technologies: ['React', 'Vue', 'TypeScript', 'JavaScript'],
     },
     {
       number: '03',
-      title: 'Databases',
+      title: isSpanish ? 'Bases de datos' : 'Databases',
       technologies: [
         'SQL Server',
         'MySQL',
@@ -22,7 +23,7 @@ function Skills() {
     },
     {
       number: '04',
-      title: 'Cloud & Tools',
+      title: isSpanish ? 'Nube y herramientas' : 'Cloud & Tools',
       technologies: [
         'AWS',
         'Git',
@@ -37,8 +38,8 @@ function Skills() {
       <div className="skills-content">
         <div className="section-heading">
           <h2>
-            Tools I use to
-            <em> build.</em>
+            {isSpanish ? 'Herramientas para' : 'Tools I use to'}
+            <em>{isSpanish ? ' construir.' : ' build.'}</em>
           </h2>
         </div>
 

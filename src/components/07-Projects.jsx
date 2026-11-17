@@ -37,23 +37,37 @@ const projects = [
   },
 ];
 
-function Projects() {
+function Projects({ language }) {
+  const isSpanish = language === 'es';
+  const translatedDescriptions = {
+    'LottoLab CR':
+      'Aplicación de análisis de datos en desarrollo que estudia resultados históricos de chances para explorar frecuencias y estimar probabilidades de futuros sorteos.',
+    'Educational Games Website':
+      'Sitio web con juegos educativos, creado como parte del proyecto TCU-584.',
+    'FRCHO Clothing Store':
+      'Tienda en línea de ropa que ofrece una experiencia de compra dedicada a la marca FRCHO.',
+  };
+  const translatedStatuses = {
+    'In progress': 'En desarrollo',
+    Completed: 'Completado',
+  };
   return (
     <section id="projects" className="section projects">
       <div className="section-label">
-        <p>Selected work</p>
+        <p>{isSpanish ? 'Proyectos destacados' : 'Selected work'}</p>
       </div>
 
       <div className="projects-content">
         <div className="section-heading projects-heading">
           <h2>
-            Things I've
-            <em> built.</em>
+            {isSpanish ? 'Lo que he' : "Things I've"}
+            <em>{isSpanish ? ' construido.' : ' built.'}</em>
           </h2>
 
           <p>
-            A selection of projects that represent how I approach
-            software, architecture and problem solving.
+            {isSpanish
+              ? 'Una selección de proyectos que representa mi enfoque del software, la arquitectura y la resolución de problemas.'
+              : 'A selection of projects that represent how I approach software, architecture and problem solving.'}
           </p>
         </div>
 
@@ -62,21 +76,40 @@ function Projects() {
             <article className="project" key={project.number}>
               <div className="project-info">
                 <span className="project-type">
-                  {project.type}
+                  {isSpanish
+                    ? {
+                        'In development · Data analysis': 'En desarrollo · Análisis de datos',
+                        'Educational website': 'Sitio web educativo',
+                        'Online store': 'Tienda en línea',
+                      }[project.type]
+                    : project.type}
                 </span>
                 <span className={`project-status ${project.statusClass}`}>
-                  {project.status}
+                  {isSpanish ? translatedStatuses[project.status] : project.status}
                 </span>
 
                 <h3>{project.name}</h3>
 
-                <p>{project.description}</p>
+                <p>
+                  {isSpanish
+                    ? translatedDescriptions[project.name]
+                    : project.description}
+                </p>
 
                 <div className="project-footer">
                   <div className="project-stack">
                     {project.stack.map((technology) => (
                       <span key={technology}>
-                        {technology}
+                        {isSpanish
+                          ? {
+                              'Data analysis': 'Análisis de datos',
+                              'Chances results': 'Resultados de chances',
+                              'Educational games': 'Juegos educativos',
+                              'Interactive website': 'Sitio web interactivo',
+                              Fashion: 'Moda',
+                              'E-commerce': 'Comercio electrónico',
+                            }[technology]
+                          : technology}
                       </span>
                     ))}
                   </div>
@@ -96,7 +129,7 @@ function Projects() {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Live demo ↗
+                        {isSpanish ? 'Ver sitio ↗' : 'Live demo ↗'}
                       </a>
                     ) : null}
                   </div>
@@ -104,7 +137,7 @@ function Projects() {
               </div>
 
               <div className="project-hover">
-                View project <span>↗</span>
+                {isSpanish ? 'Ver proyecto' : 'View project'} <span>↗</span>
               </div>
             </article>
           ))}

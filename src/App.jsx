@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from 'react';
 import Header from './components/01-Header';
 import Hero from './components/02-Hero';
 import About from './components/03-About';
@@ -10,28 +11,47 @@ import Contact from './components/08-Contact';
 import './App.css';
 
 function App() {
+  const [language, setLanguage] = useState('en');
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  }, [theme]);
+
   return (
     <div className="app">
-      <Header />
+      <Header
+        language={language}
+        onLanguageChange={setLanguage}
+        theme={theme}
+        onThemeChange={() =>
+          setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'))
+        }
+      />
 
       <main>
-        <Hero />
-        <About />
-        <Education />
-        <Skills />
-        <Projects />
-        <Contact />
+        <Hero key={language} language={language} />
+        <About language={language} />
+        <Education language={language} />
+        <Skills language={language} />
+        <Projects language={language} />
+        <Contact language={language} />
       </main>
 
       <footer className="footer">
         <span>© 2026 Fernando Sánchez Moraga</span>
 
         <span>
-          NANCORE · Designed & built with React
+          NANCORE · {language === 'es' ? 'Diseñado y creado con React' : 'Designed & built with React'}
         </span>
 
         <a href="#hero">
-          Back to top ↑
+          {language === 'es' ? 'Volver arriba' : 'Back to top'} ↑
         </a>
       </footer>
     </div>

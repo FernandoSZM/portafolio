@@ -1,21 +1,39 @@
 import { useEffect, useState } from 'react';
 import heroPhoto from '../assets/profile.png';
 
-const roles = ['Data Architect', 'Data Analyst', 'Systems Engineer'];
-const specialties = [
-  'Software Engineering',
-  'Software Architecture',
-  'Data Analytics',
-  'Data Engineering',
-  'Python',
-  'SQL',
-  'ETL & Data Pipelines',
-  'API Development',
-  'Cloud Computing',
-  'Full-Stack Development',
-];
+const ROLE_OPTIONS = {
+  en: ['Data Architect', 'Data Analyst', 'Systems Engineer'],
+  es: ['Arquitecto de datos', 'Analista de datos', 'Ingeniero de sistemas'],
+};
 
-function Hero() {
+function Hero({ language }) {
+  const isSpanish = language === 'es';
+  const roles = ROLE_OPTIONS[language];
+  const specialties = isSpanish
+    ? [
+        'Ingeniería de software',
+        'Arquitectura de software',
+        'Analítica de datos',
+        'Ingeniería de datos',
+        'Python',
+        'SQL',
+        'ETL y pipelines de datos',
+        'Desarrollo de APIs',
+        'Computación en la nube',
+        'Desarrollo full-stack',
+      ]
+    : [
+        'Software Engineering',
+        'Software Architecture',
+        'Data Analytics',
+        'Data Engineering',
+        'Python',
+        'SQL',
+        'ETL & Data Pipelines',
+        'API Development',
+        'Cloud Computing',
+        'Full-Stack Development',
+      ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [characterCount, setCharacterCount] = useState(() =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -47,7 +65,7 @@ function Hero() {
     }, delay);
 
     return () => window.clearTimeout(typingTimer);
-  }, [characterCount, isDeleting, roleIndex]);
+  }, [characterCount, isDeleting, roleIndex, roles]);
 
   const displayedRole = roles[roleIndex].slice(0, characterCount);
 
@@ -57,7 +75,7 @@ function Hero() {
         <div className="hero-content">
           <div className="availability">
             <span className="status-dot" />
-            <span>Available for opportunities</span>
+            <span>{isSpanish ? 'Disponible para oportunidades' : 'Available for opportunities'}</span>
           </div>
 
           <h1>
@@ -75,18 +93,19 @@ function Hero() {
 
           <div className="hero-description">
             <p>
-              Business Informatics graduate designing thoughtful software and turning
-              complex data into clear, useful solutions.
+              {isSpanish
+                ? 'Bachiller en Informática Empresarial; diseño software bien pensado y convierto datos complejos en soluciones claras y útiles.'
+                : 'Business Informatics graduate designing thoughtful software and turning complex data into clear, useful solutions.'}
             </p>
           </div>
 
           <div className="hero-actions">
             <a href="#projects" className="button button-primary">
-              View projects <span>↗</span>
+              {isSpanish ? 'Ver proyectos' : 'View projects'} <span>↗</span>
             </a>
 
             <a href="#contact" className="button button-secondary">
-              Contact me
+              {isSpanish ? 'Contáctame' : 'Contact me'}
             </a>
           </div>
         </div>
@@ -99,12 +118,12 @@ function Hero() {
 
           <div className="hero-image-label">
             <span>Alajuela, Costa Rica</span>
-            <span>Software · Data · Architecture</span>
+            <span>{isSpanish ? 'Software · Datos · Arquitectura' : 'Software · Data · Architecture'}</span>
           </div>
         </div>
       </div>
 
-      <div className="hero-specialties" aria-label="Areas of expertise">
+      <div className="hero-specialties" aria-label={isSpanish ? 'Áreas de especialidad' : 'Areas of expertise'}>
         {specialties.map((specialty) => (
           <span key={specialty}>{specialty}</span>
         ))}
