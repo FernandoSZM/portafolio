@@ -1,5 +1,23 @@
 function Skills({ language }) {
   const isSpanish = language === 'es';
+  const technologyIcons = {
+    Python: 'python/python-original',
+    'C#': 'csharp/csharp-original',
+    Java: 'java/java-original',
+    React: 'react/react-original',
+    Vue: 'vuejs/vuejs-original',
+    TypeScript: 'typescript/typescript-original',
+    JavaScript: 'javascript/javascript-original',
+    'SQL Server': 'microsoftsqlserver/microsoftsqlserver-original',
+    MySQL: 'mysql/mysql-original',
+    PostgreSQL: 'postgresql/postgresql-original',
+    Oracle: 'oracle/oracle-original',
+    AWS: 'amazonwebservices/amazonwebservices-original-wordmark',
+    Git: 'git/git-original',
+    Postman: 'postman/postman-original',
+    Jira: 'jira/jira-original',
+  };
+
   const categories = [
     {
       number: '01',
@@ -51,8 +69,19 @@ function Skills({ language }) {
 
                 <div className="technology-list">
                   {category.technologies.map((technology) => (
-                    <span key={technology}>
-                      {technology}
+                    <span className="technology-item" key={technology} title={technology}>
+                      {technologyIcons[technology] ? (
+                        <img
+                          src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${technologyIcons[technology]}.svg`}
+                          alt=""
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span className="technology-icon-fallback" aria-hidden="true">
+                          ETL
+                        </span>
+                      )}
+                      <span className="technology-name">{technology}</span>
                     </span>
                   ))}
                 </div>

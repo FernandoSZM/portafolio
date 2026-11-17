@@ -800,6 +800,51 @@ img {
   color: var(--muted);
 }
 
+.technology-list .technology-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  min-height: 2.15rem;
+  padding: 0.35rem 0.58rem;
+  border-radius: 7px;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s var(--ease);
+}
+
+.technology-list .technology-name {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.technology-item img,
+.technology-icon-fallback {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 1.35rem;
+  object-fit: contain;
+}
+
+.technology-icon-fallback {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-size: 0.48rem;
+  line-height: 1;
+}
+
+.technology-list .technology-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
 .skill-arrow {
   align-self: center;
 
@@ -3187,6 +3232,17 @@ button:focus-visible {
   font-size: 0.58rem;
 }
 
+.technology-list .technology-item {
+  min-height: 1.8rem;
+}
+
+.technology-item img,
+.technology-icon-fallback {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-basis: 1.1rem;
+}
+
 .skill-arrow {
   display: none;
 }
@@ -3237,6 +3293,17 @@ button:focus-visible {
   .technology-list span {
     padding: 0.18rem 0.32rem;
     font-size: 0.52rem;
+  }
+
+  .technology-name {
+    display: none;
+  }
+
+  .technology-list .technology-item {
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    padding: 0.35rem;
   }
 }
 
