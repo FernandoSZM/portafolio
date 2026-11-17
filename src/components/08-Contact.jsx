@@ -12,9 +12,9 @@ function Contact({ language }) {
           {isSpanish ? '¿Tienes un proyecto en mente?' : 'Have a project in mind?'}
         </span>
 
-        <h2>
-          {isSpanish ? 'Construyamos' : "Let's build"}
-          <em>{isSpanish ? ' algo juntos.' : ' something.'}</em>
+        <h2 className={isSpanish ? 'contact-heading contact-heading-spanish' : 'contact-heading'}>
+          {isSpanish ? 'Trabajemos' : "Let's build"}
+          <em>{isSpanish ? ' juntos.' : ' something.'}</em>
         </h2>
 
         <p>

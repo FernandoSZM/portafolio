@@ -1379,6 +1379,15 @@ img {
   }
 }
 
+@media (max-width: 700px) {
+  .contact h2.contact-heading-spanish {
+    font-size: clamp(1.6rem, 8vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+  }
+}
+
 
 
 /* =========================================================
@@ -2621,6 +2630,75 @@ button:focus-visible {
   z-index: 1;
 }
 
+.hero-content .availability,
+.hero-content h1,
+.hero-content .hero-code,
+.hero-content .hero-description,
+.hero-content .hero-actions {
+  animation: hero-content-enter 0.65s var(--ease) both;
+}
+
+.hero-content h1 {
+  animation-delay: 0.08s;
+}
+
+.hero-content .hero-code {
+  animation-delay: 0.16s;
+}
+
+.hero-content .hero-description {
+  animation-delay: 0.24s;
+}
+
+.hero-content .hero-actions {
+  animation-delay: 0.32s;
+}
+
+.hero-image-wrapper {
+  animation: hero-image-enter 0.8s var(--ease) 0.16s both;
+}
+
+.hero-specialties {
+  animation: hero-content-enter 0.7s var(--ease) 0.35s both;
+}
+
+@keyframes hero-content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-image-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s var(--ease),
+    transform 0.65s var(--ease);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .availability {
   margin-bottom: 0.85rem;
 }
@@ -3207,6 +3285,22 @@ button:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-content .availability,
+  .hero-content h1,
+  .hero-content .hero-code,
+  .hero-content .hero-description,
+  .hero-content .hero-actions,
+  .hero-image-wrapper,
+  .hero-specialties {
+    animation: none;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .skill-item::after,
   .project::after,
   .education-card::after {
@@ -3278,7 +3372,8 @@ button:focus-visible {
   }
 
   .nav-links .language-toggle {
-    width: fit-content;
+    width: 2.45rem;
+    height: 2.45rem;
     border-color: rgba(245, 248, 244, 0.35);
     color: #f5f8f4;
   }
