@@ -868,6 +868,42 @@ img {
   color: var(--muted-dark);
 }
 
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.65rem;
+  padding: 0.22rem 0.55rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.project-status::before {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: currentColor;
+  content: '';
+}
+
+.project-status.in-progress {
+  border-color: rgba(168, 117, 33, 0.25);
+  background: rgba(223, 172, 82, 0.1);
+  color: #966519;
+}
+
+.project-status.completed {
+  border-color: rgba(22, 139, 120, 0.25);
+  background: rgba(22, 139, 120, 0.09);
+  color: #0f7566;
+}
+
 .project h3 {
   margin-top: 0.7rem;
 
@@ -935,9 +971,12 @@ img {
   text-transform: uppercase;
 }
 
-.project-links a {
+.project-links a,
+.project-links span {
   color: var(--ink);
+}
 
+.project-links a {
   transition: color 0.25s ease;
 }
 

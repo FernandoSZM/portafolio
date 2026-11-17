@@ -14,7 +14,7 @@ function About() {
 
         <div className="about-grid">
           <p className="about-lead">
-            I'm Fernando, a Computer Engineer from Costa Rica with a strong
+            I'm Fernando, a Business Informatics graduate from Costa Rica with a strong
             interest in software development, data, and cloud technologies.
           </p>
 
@@ -32,7 +32,7 @@ function About() {
 
             <div className="about-location">
               <span>Based in</span>
-              <strong>Atenas, Costa Rica</strong>
+              <strong>Alajuela, Costa Rica</strong>
             </div>
           </div>
         </div>

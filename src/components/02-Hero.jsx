@@ -75,7 +75,7 @@ function Hero() {
 
           <div className="hero-description">
             <p>
-              Computer Engineer designing thoughtful software and turning
+              Business Informatics graduate designing thoughtful software and turning
               complex data into clear, useful solutions.
             </p>
           </div>
@@ -98,7 +98,7 @@ function Hero() {
           </div>
 
           <div className="hero-image-label">
-            <span>Costa Rica</span>
+            <span>Alajuela, Costa Rica</span>
             <span>Software · Data · Architecture</span>
           </div>
         </div>

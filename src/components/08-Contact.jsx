@@ -22,10 +22,10 @@ function Contact() {
         </p>
 
         <a
-          href="mailto:tu_correo@ejemplo.com"
+          href="mailto:nano.sanfs@gmail.com"
           className="contact-email"
         >
-          tu_correo@ejemplo.com
+          nano.sanfs@gmail.com
           <span>↗</span>
         </a>
 
@@ -39,7 +39,7 @@ function Contact() {
           </a>
 
           <a
-            href="https://linkedin.com/in/tu-usuario"
+            href="https://www.linkedin.com/in/fernandofsm/"
             target="_blank"
             rel="noreferrer"
           >

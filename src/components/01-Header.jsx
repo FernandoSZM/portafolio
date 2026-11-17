@@ -56,7 +56,7 @@ function Header() {
             Let&apos;s talk <span>↗</span>
           </a>
 
-          <p className="nav-menu-note">Costa Rica · Software &amp; data</p>
+          <p className="nav-menu-note">Alajuela, Costa Rica · Software &amp; data</p>
         </div>
       </nav>
     </header>

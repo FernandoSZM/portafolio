@@ -15,15 +15,10 @@ function Education() {
 
         <article className="education-card">
           <span className="education-card-label">Academic background</span>
-          <h3>Computer Engineering</h3>
-          <p>
-            A multidisciplinary foundation in software development, systems
-            design, and data technologies.
-          </p>
+          <h3>Universidad de Costa Rica</h3>
+          <p>Bachelor’s Degree in Business Informatics</p>
           <div className="education-focus">
-            <span>Software architecture</span>
-            <span>Data analytics</span>
-            <span>Full-stack development</span>
+            <span>Apr 2019 – May 2024</span>
           </div>
         </article>
       </div>

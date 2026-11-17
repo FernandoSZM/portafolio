@@ -1,33 +1,39 @@
 const projects = [
   {
     number: '01',
-    name: 'Project One',
+    name: 'LottoLab CR',
     description:
-      'A full-stack application focused on solving a real-world problem through a clean interface and structured backend architecture.',
-    stack: ['React', 'Node.js', 'PostgreSQL'],
-    type: 'Full-Stack Application',
-    github: '#',
-    demo: '#',
+      'An in-progress data analysis app that studies historical Chances results to explore number frequencies and estimate probabilities for future draws.',
+    stack: ['Data analysis', 'Chances results'],
+    type: 'In development · Data analysis',
+    status: 'In progress',
+    statusClass: 'in-progress',
+    github: 'https://github.com/FernandoSZM/LottoLab-CR',
+    demo: null,
   },
   {
     number: '02',
-    name: 'Project Two',
+    name: 'Educational Games Website',
     description:
-      'A data-oriented application designed to process, organize and visualize information through a modern web interface.',
-    stack: ['Python', 'SQL', 'React'],
-    type: 'Data / Web Application',
-    github: '#',
-    demo: '#',
+      'A website featuring educational games, created as part of the TCU-584 project.',
+    stack: ['Educational games', 'Interactive website'],
+    type: 'Educational website',
+    status: 'Completed',
+    statusClass: 'completed',
+    github: 'https://github.com/FernandoSZM/TCU-584',
+    demo: 'https://agrogamestcu.netlify.app',
   },
   {
     number: '03',
-    name: 'Project Three',
+    name: 'FRCHO Clothing Store',
     description:
-      'A backend-focused project exploring APIs, database architecture and scalable application development.',
-    stack: ['C#', 'SQL Server', 'REST API'],
-    type: 'Backend System',
-    github: '#',
-    demo: '#',
+      'An online clothing store offering a dedicated shopping experience for the FRCHO brand.',
+    stack: ['Fashion', 'E-commerce'],
+    type: 'Online store',
+    status: 'In progress',
+    statusClass: 'in-progress',
+    github: 'https://github.com/FernandoSZM/tienda-ropa-react',
+    demo: 'https://gilded-gumdrop-ff6d2c.netlify.app',
   },
 ];
 
@@ -58,6 +64,9 @@ function Projects() {
                 <span className="project-type">
                   {project.type}
                 </span>
+                <span className={`project-status ${project.statusClass}`}>
+                  {project.status}
+                </span>
 
                 <h3>{project.name}</h3>
 
@@ -81,13 +90,15 @@ function Projects() {
                       GitHub ↗
                     </a>
 
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Live demo ↗
-                    </a>
+                    {project.demo ? (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Live demo ↗
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </div>
