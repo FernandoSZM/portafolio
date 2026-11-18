@@ -12,7 +12,7 @@ function Skills({ language }) {
     MySQL: 'mysql/mysql-original',
     PostgreSQL: 'postgresql/postgresql-original',
     Oracle: 'oracle/oracle-original',
-    AWS: 'amazonwebservices/amazonwebservices-original-wordmark',
+    AWS: 'amazonwebservices/amazonwebservices-original',
     Git: 'git/git-original',
     Postman: 'postman/postman-original',
     Jira: 'jira/jira-original',
@@ -70,17 +70,25 @@ function Skills({ language }) {
                 <div className="technology-list">
                   {category.technologies.map((technology) => (
                     <span className="technology-item" key={technology} title={technology}>
-                      {technologyIcons[technology] ? (
+                      {technology === 'ETL' ? (
+                        <svg
+                          className="technology-icon-fallback etl-icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <ellipse cx="12" cy="5" rx="7" ry="3" />
+                          <path d="M5 5v10c0 1.7 3.1 3 7 3 1.2 0 2.3-.1 3.3-.4" />
+                          <path d="M19 5v5" />
+                          <path d="m15 15 4 4 4-4" />
+                          <path d="M19 19v-5" />
+                        </svg>
+                      ) : technologyIcons[technology] ? (
                         <img
                           src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${technologyIcons[technology]}.svg`}
                           alt=""
                           loading="lazy"
                         />
-                      ) : (
-                        <span className="technology-icon-fallback" aria-hidden="true">
-                          ETL
-                        </span>
-                      )}
+                      ) : null}
                       <span className="technology-name">{technology}</span>
                     </span>
                   ))}
