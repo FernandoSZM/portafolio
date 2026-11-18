@@ -12,7 +12,8 @@ import './App.css';
 
 function App() {
   const [language, setLanguage] = useState('en');
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -21,6 +22,66 @@ function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'dark' ? '#0C0D10' : '#E3E5E6');
+  }, [theme]);
+
+  useEffect(() => {
+    const sections = [...document.querySelectorAll('main > section[id]')];
+    if (!sections.length) return undefined;
+
+    const updateActiveSection = () => {
+      const marker = window.innerHeight * 0.35;
+      const currentSection = sections.reduce((active, section) => {
+        return section.getBoundingClientRect().top <= marker ? section : active;
+      }, sections[0]);
+      setActiveSection(currentSection.id);
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
+    };
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointer = window.matchMedia('(pointer: fine)');
+    if (theme !== 'dark' || reducedMotion.matches || !finePointer.matches) {
+      return undefined;
+    }
+
+    let frameId = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const updateAmbientLight = () => {
+      root.style.setProperty('--ambient-x', `${pointerX}px`);
+      root.style.setProperty('--ambient-y', `${pointerY}px`);
+      frameId = 0;
+    };
+
+    const handlePointerMove = (event) => {
+      if (reducedMotion.matches || !finePointer.matches) return;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (!frameId) frameId = window.requestAnimationFrame(updateAmbientLight);
+    };
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      if (frameId) window.cancelAnimationFrame(frameId);
+      root.style.removeProperty('--ambient-x');
+      root.style.removeProperty('--ambient-y');
+    };
   }, [theme]);
 
   useEffect(() => {
@@ -56,6 +117,7 @@ function App() {
         language={language}
         onLanguageChange={setLanguage}
         theme={theme}
+        activeSection={activeSection}
         onThemeChange={() =>
           setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'))
         }
@@ -63,10 +125,10 @@ function App() {
 
       <main>
         <Hero key={language} language={language} />
+        <Projects language={language} />
         <About language={language} />
         <Education language={language} />
         <Skills language={language} />
-        <Projects language={language} />
         <Contact language={language} />
       </main>
 

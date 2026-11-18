@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 
 html,
 body,
@@ -8,7 +8,7 @@ body,
 }
 
 html {
-  background: var(--bg, #eae8ef);
+  background: var(--bg, #E3E5E6);
 }
 
 body {

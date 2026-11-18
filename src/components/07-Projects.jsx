@@ -39,6 +39,7 @@ const projects = [
 
 function Projects({ language }) {
   const isSpanish = language === 'es';
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const translatedDescriptions = {
     'LottoLab CR':
       'Aplicación de análisis de datos en desarrollo que estudia resultados históricos de chances para explorar frecuencias y estimar probabilidades de futuros sorteos.',
@@ -73,20 +74,43 @@ function Projects({ language }) {
 
         <div className="projects-list">
           {projects.map((project) => (
-            <article className="project" key={project.number}>
+            <article
+              className="project"
+              key={project.number}
+              onPointerMove={(event) => {
+                if (
+                  event.pointerType !== 'mouse' ||
+                  reducedMotion.matches
+                ) {
+                  return;
+                }
+                const bounds = event.currentTarget.getBoundingClientRect();
+                event.currentTarget.style.setProperty(
+                  '--card-x',
+                  `${event.clientX - bounds.left}px`,
+                );
+                event.currentTarget.style.setProperty(
+                  '--card-y',
+                  `${event.clientY - bounds.top}px`,
+                );
+              }}
+            >
               <div className="project-info">
-                <span className="project-type">
-                  {isSpanish
-                    ? {
-                        'In development · Data analysis': 'En desarrollo · Análisis de datos',
-                        'Educational website': 'Sitio web educativo',
-                        'Online store': 'Tienda en línea',
-                      }[project.type]
-                    : project.type}
-                </span>
-                <span className={`project-status ${project.statusClass}`}>
-                  {isSpanish ? translatedStatuses[project.status] : project.status}
-                </span>
+                <div className="project-meta">
+                  <span className="project-number">{project.number}</span>
+                  <span className="project-type">
+                    {isSpanish
+                      ? {
+                          'In development · Data analysis': 'En desarrollo · Análisis de datos',
+                          'Educational website': 'Sitio web educativo',
+                          'Online store': 'Tienda en línea',
+                        }[project.type]
+                      : project.type}
+                  </span>
+                  <span className={`project-status ${project.statusClass}`}>
+                    {isSpanish ? translatedStatuses[project.status] : project.status}
+                  </span>
+                </div>
 
                 <h3>{project.name}</h3>
 
@@ -136,9 +160,6 @@ function Projects({ language }) {
                 </div>
               </div>
 
-              <div className="project-hover">
-                {isSpanish ? 'Ver proyecto' : 'View project'} <span>↗</span>
-              </div>
             </article>
           ))}
         </div>

@@ -1,5 +1,29 @@
 function Skills({ language }) {
   const isSpanish = language === 'es';
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const areas = isSpanish
+    ? [
+        'Ingeniería de software',
+        'Arquitectura de software',
+        'Analítica de datos',
+        'Ingeniería de datos',
+        'Python',
+        'SQL',
+        'ETL y pipelines de datos',
+        'Desarrollo de APIs',
+        'Desarrollo full-stack',
+      ]
+    : [
+        'Software Engineering',
+        'Software Architecture',
+        'Data Analytics',
+        'Data Engineering',
+        'Python',
+        'SQL',
+        'ETL & Data Pipelines',
+        'API Development',
+        'Full-Stack Development',
+      ];
   const technologyIcons = {
     Python: 'python/python-original',
     'C#': 'csharp/csharp-original',
@@ -61,9 +85,38 @@ function Skills({ language }) {
           </h2>
         </div>
 
+        <div className="skills-specialties">
+          <p>{isSpanish ? 'Áreas de especialidad' : 'Areas of expertise'}</p>
+          <div className="specialty-list">
+            {areas.map((area) => (
+              <span key={area}>{area}</span>
+            ))}
+          </div>
+        </div>
+
         <div className="skills-list">
           {categories.map((category) => (
-            <article className="skill-item" key={category.number}>
+            <article
+              className="skill-item"
+              key={category.number}
+              onPointerMove={(event) => {
+                if (
+                  event.pointerType !== 'mouse' ||
+                  reducedMotion.matches
+                ) {
+                  return;
+                }
+                const bounds = event.currentTarget.getBoundingClientRect();
+                event.currentTarget.style.setProperty(
+                  '--card-x',
+                  `${event.clientX - bounds.left}px`,
+                );
+                event.currentTarget.style.setProperty(
+                  '--card-y',
+                  `${event.clientY - bounds.top}px`,
+                );
+              }}
+            >
               <div className="skill-main">
                 <h3>{category.title}</h3>
 

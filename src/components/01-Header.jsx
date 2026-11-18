@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-function Header({ language, onLanguageChange, theme, onThemeChange }) {
+function Header({ language, onLanguageChange, theme, activeSection, onThemeChange }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const isSpanish = language === 'es';
   const isDark = theme === 'dark';
@@ -23,7 +23,12 @@ function Header({ language, onLanguageChange, theme, onThemeChange }) {
     <header className="header">
       <nav className="nav">
         <div className="nav-brand">
-          <a href="#hero" className="nav-logo" onClick={closeMenu}>
+          <a
+            href="#hero"
+            className={`nav-logo ${activeSection === 'hero' ? 'is-active' : ''}`}
+            aria-current={activeSection === 'hero' ? 'page' : undefined}
+            onClick={closeMenu}
+          >
             <img
               src={isDark ? '/nancore-wordmark-dark.png' : '/nancore-wordmark-light.png'}
               alt="NANCORE"
@@ -47,19 +52,48 @@ function Header({ language, onLanguageChange, theme, onThemeChange }) {
           id="primary-navigation"
           className={`nav-links ${menuOpen ? 'open' : ''}`}
         >
-          <a href="#about" onClick={closeMenu}>
-            {isSpanish ? 'Sobre mí' : 'About'}
-          </a>
-
-          <a href="#education" onClick={closeMenu}>
-            {isSpanish ? 'Educación' : 'Education'}
-          </a>
-
-          <a href="#projects" onClick={closeMenu}>
+          <a
+            href="#projects"
+            className={activeSection === 'projects' ? 'is-active' : ''}
+            aria-current={activeSection === 'projects' ? 'location' : undefined}
+            onClick={closeMenu}
+          >
             {isSpanish ? 'Proyectos' : 'Projects'}
           </a>
 
-          <a href="#contact" className="nav-contact" onClick={closeMenu}>
+          <a
+            href="#about"
+            className={activeSection === 'about' ? 'is-active' : ''}
+            aria-current={activeSection === 'about' ? 'location' : undefined}
+            onClick={closeMenu}
+          >
+            {isSpanish ? 'Sobre mí' : 'About'}
+          </a>
+
+          <a
+            href="#education"
+            className={activeSection === 'education' ? 'is-active' : ''}
+            aria-current={activeSection === 'education' ? 'location' : undefined}
+            onClick={closeMenu}
+          >
+            {isSpanish ? 'Educación' : 'Education'}
+          </a>
+
+          <a
+            href="#skills"
+            className={activeSection === 'skills' ? 'is-active' : ''}
+            aria-current={activeSection === 'skills' ? 'location' : undefined}
+            onClick={closeMenu}
+          >
+            {isSpanish ? 'Habilidades' : 'Skills'}
+          </a>
+
+          <a
+            href="#contact"
+            className={`nav-contact ${activeSection === 'contact' ? 'is-active' : ''}`}
+            aria-current={activeSection === 'contact' ? 'location' : undefined}
+            onClick={closeMenu}
+          >
             {isSpanish ? 'Hablemos' : "Let's talk"} <span>↗</span>
           </a>
 
