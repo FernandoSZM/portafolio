@@ -50,41 +50,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const root = document.documentElement;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const finePointer = window.matchMedia('(pointer: fine)');
-    if (theme !== 'dark' || reducedMotion.matches || !finePointer.matches) {
-      return undefined;
-    }
-
-    let frameId = 0;
-    let pointerX = 0;
-    let pointerY = 0;
-
-    const updateAmbientLight = () => {
-      root.style.setProperty('--ambient-x', `${pointerX}px`);
-      root.style.setProperty('--ambient-y', `${pointerY}px`);
-      frameId = 0;
-    };
-
-    const handlePointerMove = (event) => {
-      if (reducedMotion.matches || !finePointer.matches) return;
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-      if (!frameId) frameId = window.requestAnimationFrame(updateAmbientLight);
-    };
-
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
-
-    return () => {
-      window.removeEventListener('pointermove', handlePointerMove);
-      if (frameId) window.cancelAnimationFrame(frameId);
-      root.style.removeProperty('--ambient-x');
-      root.style.removeProperty('--ambient-y');
-    };
-  }, [theme]);
-
-  useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return undefined;
     }

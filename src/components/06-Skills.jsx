@@ -1,6 +1,5 @@
 function Skills({ language }) {
   const isSpanish = language === 'es';
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const areas = isSpanish
     ? [
         'Ingeniería de software',
@@ -99,23 +98,6 @@ function Skills({ language }) {
             <article
               className="skill-item"
               key={category.number}
-              onPointerMove={(event) => {
-                if (
-                  event.pointerType !== 'mouse' ||
-                  reducedMotion.matches
-                ) {
-                  return;
-                }
-                const bounds = event.currentTarget.getBoundingClientRect();
-                event.currentTarget.style.setProperty(
-                  '--card-x',
-                  `${event.clientX - bounds.left}px`,
-                );
-                event.currentTarget.style.setProperty(
-                  '--card-y',
-                  `${event.clientY - bounds.top}px`,
-                );
-              }}
             >
               <div className="skill-main">
                 <h3>{category.title}</h3>

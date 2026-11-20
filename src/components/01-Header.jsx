@@ -1,12 +1,50 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 function Header({ language, onLanguageChange, theme, activeSection, onThemeChange }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navLinksRef = useRef(null);
+  const navIndicatorRef = useRef(null);
   const isSpanish = language === 'es';
   const isDark = theme === 'dark';
+  const navItems = [
+    { section: 'hero', label: isSpanish ? 'Inicio' : 'Home' },
+    { section: 'projects', label: isSpanish ? 'Proyectos' : 'Projects' },
+    { section: 'about', label: isSpanish ? 'Sobre mí' : 'About' },
+    { section: 'education', label: isSpanish ? 'Educación' : 'Education' },
+    { section: 'skills', label: isSpanish ? 'Habilidades' : 'Skills' },
+    { section: 'contact', label: isSpanish ? 'Hablemos' : "Let's talk" },
+  ];
 
   const closeMenu = () => setMenuOpen(false);
+
+  useLayoutEffect(() => {
+    const navLinks = navLinksRef.current;
+    const indicator = navIndicatorRef.current;
+    const activeLink = navLinks?.querySelector(`[data-section="${activeSection}"]`);
+    if (!navLinks || !indicator || !activeLink) return undefined;
+
+    const updateIndicator = () => {
+      if (!navLinks.getClientRects().length) return;
+
+      const navBounds = navLinks.getBoundingClientRect();
+      const linkBounds = activeLink.getBoundingClientRect();
+      indicator.style.setProperty('--indicator-x', `${linkBounds.left - navBounds.left}px`);
+      indicator.style.setProperty('--indicator-y', `${linkBounds.top - navBounds.top}px`);
+      indicator.style.setProperty('--indicator-width', `${linkBounds.width}px`);
+      indicator.style.setProperty('--indicator-height', `${linkBounds.height}px`);
+    };
+
+    updateIndicator();
+    const resizeObserver = new ResizeObserver(updateIndicator);
+    resizeObserver.observe(navLinks);
+    window.addEventListener('resize', updateIndicator);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateIndicator);
+    };
+  }, [activeSection, isSpanish, menuOpen]);
 
   useEffect(() => {
     if (!menuOpen) return undefined;
@@ -50,52 +88,25 @@ function Header({ language, onLanguageChange, theme, activeSection, onThemeChang
 
         <div
           id="primary-navigation"
+          ref={navLinksRef}
           className={`nav-links ${menuOpen ? 'open' : ''}`}
         >
-          <a
-            href="#projects"
-            className={activeSection === 'projects' ? 'is-active' : ''}
-            aria-current={activeSection === 'projects' ? 'location' : undefined}
-            onClick={closeMenu}
-          >
-            {isSpanish ? 'Proyectos' : 'Projects'}
-          </a>
-
-          <a
-            href="#about"
-            className={activeSection === 'about' ? 'is-active' : ''}
-            aria-current={activeSection === 'about' ? 'location' : undefined}
-            onClick={closeMenu}
-          >
-            {isSpanish ? 'Sobre mí' : 'About'}
-          </a>
-
-          <a
-            href="#education"
-            className={activeSection === 'education' ? 'is-active' : ''}
-            aria-current={activeSection === 'education' ? 'location' : undefined}
-            onClick={closeMenu}
-          >
-            {isSpanish ? 'Educación' : 'Education'}
-          </a>
-
-          <a
-            href="#skills"
-            className={activeSection === 'skills' ? 'is-active' : ''}
-            aria-current={activeSection === 'skills' ? 'location' : undefined}
-            onClick={closeMenu}
-          >
-            {isSpanish ? 'Habilidades' : 'Skills'}
-          </a>
-
-          <a
-            href="#contact"
-            className={`nav-contact ${activeSection === 'contact' ? 'is-active' : ''}`}
-            aria-current={activeSection === 'contact' ? 'location' : undefined}
-            onClick={closeMenu}
-          >
-            {isSpanish ? 'Hablemos' : "Let's talk"} <span>↗</span>
-          </a>
+          <span className="nav-indicator" ref={navIndicatorRef} aria-hidden="true" />
+          {navItems.map(({ section, label }) => {
+            const isActive = activeSection === section;
+            return (
+              <a
+                key={section}
+                href={`#${section}`}
+                data-section={section}
+                className={`${section === 'contact' ? 'nav-contact' : ''} ${isActive ? 'is-active' : ''}`.trim()}
+                aria-current={isActive ? (section === 'hero' ? 'page' : 'location') : undefined}
+                onClick={closeMenu}
+              >
+                {label}{section === 'contact' ? <> <span>↗</span></> : null}
+              </a>
+            );
+          })}
 
           <div className="nav-utilities nav-utilities-mobile">
             <LanguageToggle

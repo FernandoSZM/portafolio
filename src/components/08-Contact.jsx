@@ -31,6 +31,20 @@ function Contact({ language }) {
           <span>↗</span>
         </a>
 
+        <p className="contact-location">
+          <span>{isSpanish ? 'Ubicación' : 'Based in'}</span>
+          <strong>Alajuela, Costa Rica</strong>
+        </p>
+
+        <div className="contact-resources">
+          <a href="/cv.pdf" target="_blank" rel="noreferrer">
+            {isSpanish ? 'Ver CV' : 'View CV'} <span>↗</span>
+          </a>
+          <a href="/cv.pdf" download="Fernando-Sanchez-Moraga-CV.pdf">
+            {isSpanish ? 'Descargar CV' : 'Download CV'} <span>↓</span>
+          </a>
+        </div>
+
         <div className="social-links">
           <a
             href="https://github.com/FernandoSZM"

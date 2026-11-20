@@ -3,8 +3,8 @@ const projects = [
     number: '01',
     name: 'LottoLab CR',
     description:
-      'An in-progress data analysis app that studies historical Chances results to explore number frequencies and estimate probabilities for future draws.',
-    stack: ['Data analysis', 'Chances results'],
+      'An in-progress analysis tool for exploring historical Chances results, reviewing number frequencies and probability calculations in one place. Built with Python, Pandas and Streamlit.',
+    stack: ['Python', 'Pandas', 'Streamlit'],
     type: 'In development · Data analysis',
     status: 'In progress',
     statusClass: 'in-progress',
@@ -15,8 +15,8 @@ const projects = [
     number: '02',
     name: 'Educational Games Website',
     description:
-      'A website featuring educational games, created as part of the TCU-584 project.',
-    stack: ['Educational games', 'Interactive website'],
+      'An educational games website about agriculture, food and waste sorting. It presents these topics through interactive games, using HTML, CSS and JavaScript.',
+    stack: ['HTML', 'CSS', 'JavaScript'],
     type: 'Educational website',
     status: 'Completed',
     statusClass: 'completed',
@@ -27,8 +27,8 @@ const projects = [
     number: '03',
     name: 'FRCHO Clothing Store',
     description:
-      'An online clothing store offering a dedicated shopping experience for the FRCHO brand.',
-    stack: ['Fashion', 'E-commerce'],
+      'An online storefront for FRCHO that brings its clothing catalog, prices and product imagery together in one place. Built with React and Vite.',
+    stack: ['React', 'Vite', 'CSS'],
     type: 'Online store',
     status: 'In progress',
     statusClass: 'in-progress',
@@ -39,14 +39,13 @@ const projects = [
 
 function Projects({ language }) {
   const isSpanish = language === 'es';
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const translatedDescriptions = {
     'LottoLab CR':
-      'Aplicación de análisis de datos en desarrollo que estudia resultados históricos de chances para explorar frecuencias y estimar probabilidades de futuros sorteos.',
+      'Herramienta de análisis en desarrollo para explorar resultados históricos de chances y consultar frecuencias y cálculos de probabilidad en un solo lugar. Desarrollada con Python, Pandas y Streamlit.',
     'Educational Games Website':
-      'Sitio web con juegos educativos, creado como parte del proyecto TCU-584.',
+      'Sitio de juegos educativos sobre agricultura, alimentación y clasificación de residuos. Presenta estos temas mediante juegos interactivos, con HTML, CSS y JavaScript.',
     'FRCHO Clothing Store':
-      'Tienda en línea de ropa que ofrece una experiencia de compra dedicada a la marca FRCHO.',
+      'Tienda en línea de FRCHO que reúne su catálogo de ropa, precios e imágenes de producto en un solo lugar. Desarrollada con React y Vite.',
   };
   const translatedStatuses = {
     'In progress': 'En desarrollo',
@@ -77,23 +76,6 @@ function Projects({ language }) {
             <article
               className="project"
               key={project.number}
-              onPointerMove={(event) => {
-                if (
-                  event.pointerType !== 'mouse' ||
-                  reducedMotion.matches
-                ) {
-                  return;
-                }
-                const bounds = event.currentTarget.getBoundingClientRect();
-                event.currentTarget.style.setProperty(
-                  '--card-x',
-                  `${event.clientX - bounds.left}px`,
-                );
-                event.currentTarget.style.setProperty(
-                  '--card-y',
-                  `${event.clientY - bounds.top}px`,
-                );
-              }}
             >
               <div className="project-info">
                 <div className="project-meta">
@@ -123,18 +105,7 @@ function Projects({ language }) {
                 <div className="project-footer">
                   <div className="project-stack">
                     {project.stack.map((technology) => (
-                      <span key={technology}>
-                        {isSpanish
-                          ? {
-                              'Data analysis': 'Análisis de datos',
-                              'Chances results': 'Resultados de chances',
-                              'Educational games': 'Juegos educativos',
-                              'Interactive website': 'Sitio web interactivo',
-                              Fashion: 'Moda',
-                              'E-commerce': 'Comercio electrónico',
-                            }[technology]
-                          : technology}
-                      </span>
+                      <span key={technology}>{technology}</span>
                     ))}
                   </div>
 
